@@ -1,0 +1,43 @@
+
+/*
+    #Color Scheme
+    #46344e
+    #FAED26
+    #5A5560
+    #9D8D8F
+    #9B786F
+*/
+
+
+body {
+    background-color: #5A5560;
+  }
+  .title{
+    color: #FAED26;
+}
+
+/* Bootstrap Override Custom Styles */
+
+
+/* Set transparent background for both active and non-active states */
+.nav-tabs .nav-link {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    border-bottom: 2px solid transparent; /* Add transparent border-bottom */
+  }
+  
+  /* Set the color of the text on active and non-active states */
+  .nav-tabs .nav-link.active,
+  .nav-tabs .nav-link {
+    color: white;
+  }
+
+/* Add the thick yellow underline for the active state */
+.nav-tabs .nav-link.active {
+    border-bottom: 2px solid yellow !important; /* Add yellow border-bottom for the active state */
+  }
+
+  /* Remove the underline from the Tab Container */
+.nav-tabs {
+    border-bottom: none !important;
+  }
