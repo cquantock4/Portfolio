@@ -10,11 +10,17 @@
 
 
 body {
-    background-color: #5A5560;
+    background-color: #5A5560 !important;
+    font-family: 'Proxima Nova', sans-serif !important;
   }
-  .title{
-    color: #FAED26;
+
+.title{
+    color: white;
 }
+
+.inner-container {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Adjust the values as needed */
+  }
 
 /* Bootstrap Override Custom Styles */
 
@@ -29,7 +35,7 @@ body {
   /* Set the color of the text on active and non-active states */
   .nav-tabs .nav-link.active,
   .nav-tabs .nav-link {
-    color: white;
+    color: white !important;
   }
 
 /* Add the thick yellow underline for the active state */

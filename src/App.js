@@ -1,5 +1,9 @@
+import { useState, useEffect, useRef } from 'react';
+
 import logo from './logo.svg';
 import './App.css';
+
+import './assets/styles/main.css'
 
 import Overview from './pages/overview'
 import Projects from './pages/projects'
@@ -21,23 +25,44 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import Badge from 'react-bootstrap/Badge';
 import Modal from 'react-bootstrap/Modal';
 
-import './assets/styles/main.css'
 
 function App() {
+
+  // State to track the active tab
+  const [activeTab, setActiveTab] = useState('overview');
+
+  // Handler for selecting a tab
+  const handleTabSelect = (key) => {
+    setActiveTab(key);
+  };
+
+  useEffect(() => {
+    // Code to run on initial page load
+    setActiveTab('overview');
+  }, []);
+
+
   return (
-    <Container fluid="xxxl" style={{padding: 15, height: '100vh'}}>
-      <Tab.Container defaultActiveKey="workouts">
-        <Nav variant="tabs">
-          <div style={{marginRight: 20, paddingLeft: 5}}>
-            <h4 className="title">Cody Quantock</h4>
-          </div>
-          <Nav.Item>
-            <Nav.Link eventKey="overview">Overview</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="projects">Projects</Nav.Link>
-          </Nav.Item>
-        </Nav>
+    <Container fluid="xxxl" style={{height: '100vh', padding: 20}}>
+      <Container fluid="xxxl" style={{padding: 25, height: '100%'}} className="inner-container">
+      <Tab.Container defaultActiveKey="workouts" activeKey={activeTab} onSelect={handleTabSelect}>
+        <Row className="justify-content-between"> {/* Use Row to create the two-column layout */}
+            <Col xs={6}> {/* First column for the name */}
+              <div style={{ paddingLeft: 5 }}>
+                <h4 className="title">Cody Quantock</h4>
+              </div>
+            </Col>
+            <Col xs={6}> {/* Second column for the tabs */}
+              <Nav variant="tabs" className="justify-content-end"> {/* Align tabs to the right */}
+                <Nav.Item>
+                  <Nav.Link eventKey="overview" style={{ fontWeight: '600', letterSpacing: 2 }}>Overview</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="projects" style={{ fontWeight: '600', letterSpacing: 2 }}>Projects</Nav.Link>
+                </Nav.Item>
+              </Nav>
+            </Col>
+          </Row>
         <Tab.Content>
           <Tab.Pane eventKey="overview">
             <Container fluid className='p-3'>
@@ -53,6 +78,7 @@ function App() {
       
       
       </Tab.Container>
+      </Container>
     </Container>
   );
 }
